@@ -32,13 +32,13 @@
         <div class="info-box">
             <span class="info-title">🔍 2026. 04 시점 기준 DB</span>
             <p class="info-text">
-                🍎 <b>애플:</b> 아이폰 1세대 ~ 17/에어 전 시리즈, 아이패드 전체<br>
+                🍎 <b>애플:</b> 아이폰 1세대 ~ 17 전 시리즈, 아이패드 전체<br>
                 🔹 <b>삼성 폰:</b> S/Note/Z/A/M/J 보급형 및 통신사 파생 전체<br>
                 💻 <b>삼성 탭:</b> 탭 S/A/E (Wi-Fi 및 LTE 전 라인업 포함)
             </p>
         </div>
         <div class="search-box">
-            <input type="text" id="q" placeholder="예: SM-N986N 또는 iPhone18,4" onfocus="this.value=''" onkeypress="if(event.keyCode==13) find()">
+            <input type="text" id="q" placeholder="예: SM-G935L 또는 iPad17,2" onfocus="this.value=''" onkeypress="if(event.keyCode==13) find()">
             <button onclick="find()">조회하기</button>
         </div>
         <div id="result">
@@ -50,7 +50,7 @@
     <script>
         const rawDb = {
             /* === [Apple iPhone] === */
-            "iPhone1,1":"아이폰 (1세대)","iPhone1,2":"아이폰 3G","iPhone2,1":"아이폰 3GS","iPhone3,1":"아이폰 4","iPhone3,2":"아이폰 4","iPhone3,3":"아이폰 4","iPhone4,1":"아이폰 4s","iPhone5,1":"아이폰 5","iPhone5,2":"아이폰 5","iPhone5,3":"아이폰 5c","iPhone5,4":"아이폰 5c","iPhone6,1":"아이폰 5s","iPhone6,2":"아이폰 5s","iPhone7,2":"아이폰 6","iPhone7,1":"아이폰 6 플러스","iPhone8,1":"아이폰 6s","iPhone8,2":"아이폰 6s 플러스","iPhone8,4":"아이폰 SE (1세대)","iPhone9,1":"아이폰 7","iPhone9,3":"아이폰 7","iPhone9,2":"아이폰 7 플러스","iPhone9,4":"아이폰 7 플러스","iPhone10,1":"아이폰 8","iPhone10,4":"아이폰 8","iPhone10,2":"아이폰 8 플러스","iPhone10,5":"아이폰 8 플러스","iPhone10,3":"아이폰 X","iPhone10,6":"아이폰 X","iPhone11,8":"아이폰 XR","iPhone11,2":"아이폰 XS","iPhone11,4":"아이폰 XS 맥스","iPhone11,6":"아이폰 XS 맥스","iPhone12,1":"아이폰 11","iPhone12,3":"아이폰 11 프로","iPhone12,5":"아이폰 11 프로 맥스","iPhone12,8":"아이폰 SE (2세대)","iPhone13,1":"아이폰 12 미니","iPhone13,2":"아이폰 12","iPhone13,3":"아이폰 12 프로","iPhone13,4":"아이폰 12 프로 맥스","iPhone14,4":"아이폰 13 미니","iPhone14,5":"아이폰 13","iPhone14,2":"아이폰 13 프로","iPhone14,3":"아이폰 13 프로 맥스","iPhone14,6":"아이폰 SE (3세대)","iPhone14,7":"아이폰 14","iPhone14,8":"아이폰 14 플러스","iPhone15,2":"아이폰 14 프로","iPhone15,3":"아이폰 14 프로 맥스","iPhone15,4":"아이폰 15","iPhone15,5":"아이폰 15 플러스","iPhone16,1":"아이폰 15 프로","iPhone16,2":"아이폰 15 프로 맥스","iPhone17,3":"아이폰 16","iPhone17,4":"아이폰 16 플러스","iPhone17,1":"아이폰 16 프로","iPhone17,2":"아이폰 16 프로 맥스","iPhone17,5":"아이폰 16e","iPhone18,3":"아이폰 17","iPhone18,4":"아이폰 에어", /* 하늘님 피드백: 아이폰 17 에어 -> 아이폰 에어 수정 완료 */ "iPhone18,1":"아이폰 17 프로","iPhone18,2":"아이폰 17 프로 맥스","iPhone18,5":"아이폰 17e",
+            "iPhone1,1":"아이폰 (1세대)","iPhone1,2":"아이폰 3G","iPhone2,1":"아이폰 3GS","iPhone3,1":"아이폰 4","iPhone3,2":"아이폰 4","iPhone3,3":"아이폰 4","iPhone4,1":"아이폰 4s","iPhone5,1":"아이폰 5","iPhone5,2":"아이폰 5","iPhone5,3":"아이폰 5c","iPhone5,4":"아이폰 5c","iPhone6,1":"아이폰 5s","iPhone6,2":"아이폰 5s","iPhone7,2":"아이폰 6","iPhone7,1":"아이폰 6 플러스","iPhone8,1":"아이폰 6s","iPhone8,2":"아이폰 6s 플러스","iPhone8,4":"아이폰 SE (1세대)","iPhone9,1":"아이폰 7","iPhone9,3":"아이폰 7","iPhone9,2":"아이폰 7 플러스","iPhone9,4":"아이폰 7 플러스","iPhone10,1":"아이폰 8","iPhone10,4":"아이폰 8","iPhone10,2":"아이폰 8 플러스","iPhone10,5":"아이폰 8 플러스","iPhone10,3":"아이폰 X","iPhone10,6":"아이폰 X","iPhone11,8":"아이폰 XR","iPhone11,2":"아이폰 XS","iPhone11,4":"아이폰 XS 맥스","iPhone11,6":"아이폰 XS 맥스","iPhone12,1":"아이폰 11","iPhone12,3":"아이폰 11 프로","iPhone12,5":"아이폰 11 프로 맥스","iPhone12,8":"아이폰 SE (2세대)","iPhone13,1":"아이폰 12 미니","iPhone13,2":"아이폰 12","iPhone13,3":"아이폰 12 프로","iPhone13,4":"아이폰 12 프로 맥스","iPhone14,4":"아이폰 13 미니","iPhone14,5":"아이폰 13","iPhone14,2":"아이폰 13 프로","iPhone14,3":"아이폰 13 프로 맥스","iPhone14,6":"아이폰 SE (3세대)","iPhone14,7":"아이폰 14","iPhone14,8":"아이폰 14 플러스","iPhone15,2":"아이폰 14 프로","iPhone15,3":"아이폰 14 프로 맥스","iPhone15,4":"아이폰 15","iPhone15,5":"아이폰 15 플러스","iPhone16,1":"아이폰 15 프로","iPhone16,2":"아이폰 15 프로 맥스","iPhone17,3":"아이폰 16","iPhone17,4":"아이폰 16 플러스","iPhone17,1":"아이폰 16 프로","iPhone17,2":"아이폰 16 프로 맥스","iPhone17,5":"아이폰 16e","iPhone18,3":"아이폰 17","iPhone18,4":"아이폰 에어","iPhone18,1":"아이폰 17 프로","iPhone18,2":"아이폰 17 프로 맥스","iPhone18,5":"아이폰 17e",
             
             /* === [Apple iPad] === */
             "iPad1,1":"아이패드 (1세대)","iPad2,1":"아이패드 2","iPad2,5":"아이패드 미니 (1세대)","iPad3,1":"아이패드 (3세대)","iPad3,4":"아이패드 (4세대)","iPad4,1":"아이패드 에어 (1세대)","iPad4,4":"아이패드 미니 2","iPad4,7":"아이패드 미니 3","iPad5,1":"아이패드 미니 4","iPad5,3":"아이패드 에어 2","iPad6,3":"아이패드 프로 9.7","iPad6,7":"아이패드 프로 12.9 (1세대)","iPad6,11":"아이패드 (5세대)","iPad7,1":"아이패드 프로 12.9 (2세대)","iPad7,3":"아이패드 프로 10.5","iPad7,5":"아이패드 (6세대)","iPad7,11":"아이패드 (7세대)","iPad8,1":"아이패드 프로 11 (1세대)","iPad8,5":"아이패드 프로 12.9 (3세대)","iPad8,9":"아이패드 프로 11 (2세대)","iPad8,11":"아이패드 프로 12.9 (4세대)","iPad11,1":"아이패드 미니 (5세대)","iPad11,3":"아이패드 에어 (3세대)","iPad11,6":"아이패드 (8세대)","iPad12,1":"아이패드 (9세대)","iPad13,1":"아이패드 에어 (4세대)","iPad13,4":"아이패드 프로 11 (3세대)","iPad13,8":"아이패드 프로 12.9 (5세대)","iPad13,16":"아이패드 에어 (5세대)","iPad13,18":"아이패드 (10세대)","iPad14,1":"아이패드 미니 (6세대)","iPad14,3":"아이패드 프로 11 (4세대)","iPad14,5":"아이패드 프로 12.9 (6세대)","iPad14,8":"아이패드 에어 11 (M2)","iPad14,10":"아이패드 에어 13 (M2)","iPad16,3":"아이패드 프로 11 (M4)","iPad16,5":"아이패드 프로 13 (M4)","iPad17,1":"아이패드 에어 11 (M2)","iPad17,2":"아이패드 에어 13 (M2)",
@@ -109,13 +109,12 @@
                     wikiSearch = wikiSearch.replace(/아이폰/g, "iPhone").replace(/프로/g, "Pro").replace(/맥스/g, "Max").replace(/플러스/g, "Plus").replace(/미니/g, "mini").replace(/에어/g, "Air");
                     wikiSearch = wikiSearch.replace(/\s+\(/g, "(");
                 } else {
-                    // 삼성 기기 맞춤형 변환 (노트, 폴드, 울트라, 엣지 완벽 처리)
                     wikiSearch = wikiSearch.split('(')[0].trim();
                     if (wikiSearch.includes("갤럭시")) {
-                        // 1. 숫자 앞 공백 제거 (노트 20 -> 노트20, 폴드 6 -> 폴드6)
+                        // 1. 공백 제거 정비 (노트 20 -> 노트20, 폴드 6 -> 폴드6)
                         wikiSearch = wikiSearch.replace(/폴드\s*(\d)/, '폴드$1').replace(/플립\s*(\d)/, '플립$1').replace(/노트\s*(\d)/, '노트$1');
-                        // 2. 한글 수식어를 영문으로 변경 (울트라 -> Ultra, 엣지 -> Edge)
-                        wikiSearch = wikiSearch.replace(/울트라/g, 'Ultra').replace(/플러스/g, '+').replace(/엣지/g, 'Edge');
+                        // 2. 나무위키 영문 변환 (울트라는 Ultra로, 엣지는 엣지로 유지!)
+                        wikiSearch = wikiSearch.replace(/울트라/g, 'Ultra').replace(/플러스/g, '+');
                     }
                 }
 
