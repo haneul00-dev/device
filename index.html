@@ -38,7 +38,7 @@
             </p>
         </div>
         <div class="search-box">
-            <input type="text" id="q" placeholder="예: iPhone17,5 또는 SM-T815" onclick="this.value=''" onkeypress="if(event.keyCode==13) find()">
+            <input type="text" id="q" placeholder="예: iPad17,2 또는 SM-T815S" onfocus="this.value=''" onkeypress="if(event.keyCode==13) find()">
             <button onclick="find()">조회하기</button>
         </div>
         <div id="result">
@@ -60,12 +60,11 @@
             "SHV-E160S":"갤럭시 노트","SHV-E250S":"갤럭시 노트 2","SM-N900S":"갤럭시 노트 3","SM-N910S":"갤럭시 노트 4","SM-N915S":"갤럭시 노트 엣지","SM-N920N":"갤럭시 노트 5","SM-N930N":"갤럭시 노트 7","SM-N935S":"갤럭시 노트 FE","SM-N950N":"갤럭시 노트 8","SM-N960N":"갤럭시 노트 9","SM-N971N":"갤럭시 노트 10","SM-N976N":"갤럭시 노트 10+","SM-N770F":"갤럭시 노트 10 Lite","SM-N981N":"갤럭시 노트 20","SM-N986N":"갤럭시 노트 20 울트라",
             "SM-F900N":"갤럭시 폴드","SM-F916N":"갤럭시 Z 폴드 2","SM-F926N":"갤럭시 Z 폴드 3","SM-F936N":"갤럭시 Z 폴드 4","SM-F946N":"갤럭시 Z 폴드 5","SM-F956N":"갤럭시 Z 폴드 6","SM-F966N":"갤럭시 Z 폴드 7","SM-F700N":"갤럭시 Z 플립","SM-F707N":"갤럭시 Z 플립 5G","SM-F711N":"갤럭시 Z 플립 3","SM-F721N":"갤럭시 Z 플립 4","SM-F731N":"갤럭시 Z 플립 5","SM-F741N":"갤럭시 Z 플립 6","SM-F751N":"갤럭시 Z 플립 7",
             
-            /* === [Samsung Galaxy A/M/J & Tablet 보강본] === */
-            "SM-A105N":"갤럭시 A10","SM-A205N":"갤럭시 A20","SM-A305N":"갤럭시 A30","SM-A505N":"갤럭시 A50","SM-A125N":"갤럭시 A12","SM-A226L":"갤럭시 A22 (버디)","SM-A325N":"갤럭시 A32","SM-A426N":"갤럭시 A42","SM-A525N":"갤럭시 A52","SM-A526N":"갤럭시 A52s 5G","SM-A826N":"갤럭시 A82 (퀀텀 2)","SM-A245N":"갤럭시 A24","SM-A346N":"갤럭시 A34 5G","SM-A546N":"갤럭시 A54 5G (퀀텀 4)","SM-A156N":"갤럭시 A15 5G","SM-A256N":"갤럭시 A25 5G","SM-A356N":"갤럭시 A35 5G","SM-A556N":"갤럭시 A55 5G (퀀텀 5)","SM-A166N":"갤럭시 A16 5G","SM-A366N":"갤럭시 A36 5G","SM-A566N":"갤럭시 A56 5G (퀀텀 6)","SM-M336K":"갤럭시 M33 (점프 2)","SM-M536K":"갤럭시 M53 (점프 3)",
+            /* === [Samsung Galaxy A/M/J & Tablet - Wi-Fi/LTE 세분화 보강본] === */
+            "SM-A105N":"갤럭시 A10","SM-A205N":"갤럭시 A20","SM-A305N":"갤럭시 A30","SM-A505N":"갤럭시 A50","SM-A125N":"갤럭시 A12","SM-A226L":"갤럭시 A22 (버디)","SM-A325N":"갤럭시 A32","SM-A426N":"갤럭시 A42","SM-A525N":"갤럭시 A52","SM-A526N":"갤럭시 A52s 5G","SM-A826N":"갤럭시 A82 (퀀텀 2)","SM-A245N":"갤럭시 A24","SM-A346N":"갤럭시 A34 5G","SM-A546N":"갤럭시 A54 5G (퀀텀 4)","SM-A156N":"갤럭시 A15 5G","SM-A256N":"갤럭시 A25 5G","SM-A356N":"갤럭시 A35 5G","SM-A556N":"갤럭시 A55 5G (퀀텀 5)","SM-A166N":"갤럭시 A16 5G","SM-A366N":"갤럭시 A36 5G","SM-A566N":"갤럭시 A56 5G (퀀텀 6)","SM-M336K":"갤럭시 M33 (점프 2)","SM-M536K":"갤럭시 M53 (점프 3)","SM-J530S":"갤럭시 J5","SM-J730S":"갤럭시 J7",
             
-            /* 태블릿은 Wi-Fi(0)와 셀룰러(5,6,7) 파생 모델을 모두 기입하여 매칭 버그 원천 차단 */
             "SM-T700":"갤럭시 탭 S 8.4","SM-T705":"갤럭시 탭 S 8.4 (LTE)","SM-T800":"갤럭시 탭 S 10.5","SM-T805":"갤럭시 탭 S 10.5 (LTE)","SM-T710":"갤럭시 탭 S2 8.0","SM-T715":"갤럭시 탭 S2 8.0 (LTE)","SM-T810":"갤럭시 탭 S2 9.7","SM-T815":"갤럭시 탭 S2 9.7 (LTE)","SM-T820":"갤럭시 탭 S3","SM-T825":"갤럭시 탭 S3 (LTE)","SM-T830":"갤럭시 탭 S4","SM-T835":"갤럭시 탭 S4 (LTE)","SM-T720":"갤럭시 탭 S5e","SM-T725":"갤럭시 탭 S5e (LTE)","SM-T860":"갤럭시 탭 S6","SM-T865":"갤럭시 탭 S6 (LTE)","SM-T866N":"갤럭시 탭 S6 (5G)","SM-P610":"갤럭시 탭 S6 Lite","SM-P615":"갤럭시 탭 S6 Lite (LTE)","SM-T870":"갤럭시 탭 S7","SM-T875":"갤럭시 탭 S7 (LTE)","SM-T970":"갤럭시 탭 S7+","SM-T975":"갤럭시 탭 S7+ (LTE)","SM-T976":"갤럭시 탭 S7+ (5G)","SM-T730":"갤럭시 탭 S7 FE","SM-T733":"갤럭시 탭 S7 FE (Wi-Fi)","SM-T735":"갤럭시 탭 S7 FE (LTE)","SM-T736":"갤럭시 탭 S7 FE (5G)","SM-X700":"갤럭시 탭 S8","SM-X706":"갤럭시 탭 S8 (5G)","SM-X800":"갤럭시 탭 S8+","SM-X806":"갤럭시 탭 S8+ (5G)","SM-X900":"갤럭시 탭 S8 울트라","SM-X906":"갤럭시 탭 S8 울트라 (5G)","SM-X710":"갤럭시 탭 S9","SM-X716":"갤럭시 탭 S9 (5G)","SM-X810":"갤럭시 탭 S9+","SM-X816":"갤럭시 탭 S9+ (5G)","SM-X910":"갤럭시 탭 S9 울트라","SM-X916":"갤럭시 탭 S9 울트라 (5G)","SM-X510":"갤럭시 탭 S9 FE","SM-X516":"갤럭시 탭 S9 FE (5G)","SM-X610":"갤럭시 탭 S9 FE+","SM-X616":"갤럭시 탭 S9 FE+ (5G)","SM-X820":"갤럭시 탭 S10+","SM-X826":"갤럭시 탭 S10+ (5G)","SM-X920":"갤럭시 탭 S10 울트라","SM-X926N":"갤럭시 탭 S10 울트라 (5G)","SM-X730":"갤럭시 탭 S11","SM-X736":"갤럭시 탭 S11 (5G)","SM-X830":"갤럭시 탭 S11+","SM-X836":"갤럭시 탭 S11+ (5G)","SM-X930":"갤럭시 탭 S11 울트라","SM-X936":"갤럭시 탭 S11 울트라 (5G)","SM-X936N":"갤럭시 탭 S11 울트라 (5G)",
-            "SM-T280":"갤럭시 탭 A 7.0","SM-T380":"갤럭시 탭 A 8.0","SM-T500":"갤럭시 탭 A7","SM-T505":"갤럭시 탭 A7 (LTE)","SM-X200":"갤럭시 탭 A8","SM-X205":"갤럭시 탭 A8 (LTE)","SM-X110":"갤럭시 탭 A9","SM-X210":"갤럭시 탭 A9+","SM-X215":"갤럭시 탭 A9+ (5G)"
+            "SM-T280":"갤럭시 탭 A 7.0","SM-T380":"갤럭시 탭 A 8.0","SM-T500":"갤럭시 탭 A7","SM-T505":"갤럭시 탭 A7 (LTE)","SM-X200":"갤럭시 탭 A8","SM-X205":"갤럭시 탭 A8 (LTE)","SM-X110":"갤럭시 탭 A9","SM-X210":"갤럭시 탭 A9+","SM-X215":"갤럭시 탭 A9+ (5G)","SM-T375":"갤럭시 탭 E 8.0","SM-T560":"갤럭시 탭 E 9.6"
         };
 
         const dbUpperCase = {};
@@ -80,11 +79,12 @@
             let searchKey = originalInput.toUpperCase();
             let resDiv = document.getElementById('result');
             
-            // 1차 검색
+            // 1. 1차 정밀 검색
             let found = dbUpperCase[searchKey];
 
-            // 2차 유연 검색: SM- 뒤에 영문+숫자 기본형 추출 (통신사 K,S,L,N 등 잘라내기)
+            // 2. 2차 유연 검색 (통신사 K,S,L 파생형 자동 매칭)
             if (!found) {
+                // SM- 로 시작하는 영문+숫자 기본형 추출 (예: SM-T815S -> SM-T815)
                 let match = searchKey.match(/^(SM-[A-Z]+[0-9]+)/);
                 if (match) {
                     let base = match[1]; 
@@ -101,38 +101,33 @@
                 document.getElementById('resN').innerText = found;
                 document.getElementById('resI').innerText = originalInput;
                 
-                // [핵심] 나무위키 404 방지용 스마트 링크 변환
-                let wikiSearch = found.split('(')[0].trim();
-                let wikiUrl = "https://namu.wiki/w/" + encodeURIComponent(wikiSearch);
-
-                if (found.includes("아이패드")) {
-                    // 애플 기기명 나무위키 100% 매칭
-                    if (found.includes("에어 11") || found.includes("에어 13")) {
-                        wikiUrl = "https://namu.wiki/w/iPad%20Air(M2%20모델)";
-                    } else if (found.includes("프로 11 (M4)") || found.includes("프로 13 (M4)")) {
-                        wikiUrl = "https://namu.wiki/w/iPad%20Pro(M4%20모델)";
-                    } else if (found.includes("미니")) {
-                        let gen = found.match(/\d세대/);
-                        wikiUrl = "https://namu.wiki/w/iPad%20mini" + (gen ? "(" + gen[0] + ")" : "");
-                    } else if (found.includes("에어")) {
-                        let gen = found.match(/\d세대/);
-                        wikiUrl = "https://namu.wiki/w/iPad%20Air" + (gen ? "(" + gen[0] + ")" : "");
-                    } else if (found.includes("프로")) {
-                        wikiUrl = "https://namu.wiki/w/iPad%20Pro";
-                    } else {
-                        let gen = found.match(/\d세대/);
-                        wikiUrl = "https://namu.wiki/w/iPad" + (gen ? "(" + gen[0] + ")" : "");
+                // [핵심] 나무위키 영문/괄호 규칙 100% 매칭 스마트 변환
+                let wikiSearch = found;
+                
+                if (wikiSearch.includes("아이패드")) {
+                    // 한글을 나무위키 영문 규격으로 변환
+                    wikiSearch = wikiSearch.replace(/아이패드/g, "iPad").replace(/프로/g, "Pro").replace(/에어/g, "Air").replace(/미니/g, "mini");
+                    // M칩 모델 괄호 정비: (M2) -> (M2 모델)
+                    wikiSearch = wikiSearch.replace(/\(M(\d)\)/, "(M$1 모델)");
+                    // 세대수 띄어쓰기 정비: iPad Air (1세대) -> iPad Air(1세대)
+                    wikiSearch = wikiSearch.replace(/\s+\(/g, "(");
+                    
+                    // 1세대 특수 처리
+                    if (wikiSearch === "iPad Air(1세대)") wikiSearch = "iPad Air";
+                    if (wikiSearch === "iPad mini(1세대)") wikiSearch = "iPad mini";
+                } else if (wikiSearch.includes("아이폰")) {
+                    wikiSearch = wikiSearch.replace(/아이폰/g, "iPhone").replace(/프로/g, "Pro").replace(/맥스/g, "Max").replace(/플러스/g, "Plus").replace(/미니/g, "mini").replace(/에어/g, "Air");
+                    wikiSearch = wikiSearch.replace(/\s+\(/g, "(");
+                } else {
+                    // 삼성 기기 처리
+                    wikiSearch = wikiSearch.split('(')[0].trim();
+                    if (wikiSearch.includes("갤럭시 Z")) {
+                        // 폴드/플립 띄어쓰기 정비: Z 폴드 6 -> Z 폴드6
+                        wikiSearch = wikiSearch.replace(/폴드\s*(\d)/, '폴드$1').replace(/플립\s*(\d)/, '플립$1');
                     }
-                } else if (found.includes("아이폰")) {
-                    wikiSearch = found.replace(/아이폰/g, "iPhone").replace(/프로/g, "Pro").replace(/맥스/g, "Max").replace(/플러스/g, "Plus").replace(/미니/g, "mini").replace(/에어/g, "Air");
-                    wikiUrl = "https://namu.wiki/w/" + encodeURIComponent(wikiSearch);
-                } else if (found.includes("갤럭시 Z")) {
-                    // 폴드 6 -> 폴드6 띄어쓰기 변환
-                    wikiSearch = wikiSearch.replace(/폴드\s*(\d)/, '폴드$1').replace(/플립\s*(\d)/, '플립$1');
-                    wikiUrl = "https://namu.wiki/w/" + encodeURIComponent(wikiSearch);
                 }
 
-                document.getElementById('wikiBtn').href = wikiUrl;
+                document.getElementById('wikiBtn').href = "https://namu.wiki/w/" + encodeURIComponent(wikiSearch);
                 resDiv.style.display = 'block';
             } else {
                 alert("해당 기기는 DB에 없거나 번호가 정확하지 않습니다.\n입력 코드를 다시 확인해 주세요.");
