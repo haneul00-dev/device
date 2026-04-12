@@ -38,7 +38,7 @@
             </p>
         </div>
         <div class="search-box">
-            <input type="text" id="q" placeholder="예: SM-G935L 또는 iPad17,2" onfocus="this.value=''" onkeypress="if(event.keyCode==13) find()">
+            <input type="text" id="q" placeholder="예: SM-N920N 또는 iPhone8,4" onfocus="this.value=''" onkeypress="if(event.keyCode==13) find()">
             <button onclick="find()">조회하기</button>
         </div>
         <div id="result">
@@ -48,6 +48,7 @@
         </div>
     </div>
     <script>
+        // 향후 업데이트 시 아래 rawDb 내용만 수정하거나 한 줄씩 추가하시면 됩니다!
         const rawDb = {
             /* === [Apple iPhone] === */
             "iPhone1,1":"아이폰 (1세대)","iPhone1,2":"아이폰 3G","iPhone2,1":"아이폰 3GS","iPhone3,1":"아이폰 4","iPhone3,2":"아이폰 4","iPhone3,3":"아이폰 4","iPhone4,1":"아이폰 4s","iPhone5,1":"아이폰 5","iPhone5,2":"아이폰 5","iPhone5,3":"아이폰 5c","iPhone5,4":"아이폰 5c","iPhone6,1":"아이폰 5s","iPhone6,2":"아이폰 5s","iPhone7,2":"아이폰 6","iPhone7,1":"아이폰 6 플러스","iPhone8,1":"아이폰 6s","iPhone8,2":"아이폰 6s 플러스","iPhone8,4":"아이폰 SE (1세대)","iPhone9,1":"아이폰 7","iPhone9,3":"아이폰 7","iPhone9,2":"아이폰 7 플러스","iPhone9,4":"아이폰 7 플러스","iPhone10,1":"아이폰 8","iPhone10,4":"아이폰 8","iPhone10,2":"아이폰 8 플러스","iPhone10,5":"아이폰 8 플러스","iPhone10,3":"아이폰 X","iPhone10,6":"아이폰 X","iPhone11,8":"아이폰 XR","iPhone11,2":"아이폰 XS","iPhone11,4":"아이폰 XS 맥스","iPhone11,6":"아이폰 XS 맥스","iPhone12,1":"아이폰 11","iPhone12,3":"아이폰 11 프로","iPhone12,5":"아이폰 11 프로 맥스","iPhone12,8":"아이폰 SE (2세대)","iPhone13,1":"아이폰 12 미니","iPhone13,2":"아이폰 12","iPhone13,3":"아이폰 12 프로","iPhone13,4":"아이폰 12 프로 맥스","iPhone14,4":"아이폰 13 미니","iPhone14,5":"아이폰 13","iPhone14,2":"아이폰 13 프로","iPhone14,3":"아이폰 13 프로 맥스","iPhone14,6":"아이폰 SE (3세대)","iPhone14,7":"아이폰 14","iPhone14,8":"아이폰 14 플러스","iPhone15,2":"아이폰 14 프로","iPhone15,3":"아이폰 14 프로 맥스","iPhone15,4":"아이폰 15","iPhone15,5":"아이폰 15 플러스","iPhone16,1":"아이폰 15 프로","iPhone16,2":"아이폰 15 프로 맥스","iPhone17,3":"아이폰 16","iPhone17,4":"아이폰 16 플러스","iPhone17,1":"아이폰 16 프로","iPhone17,2":"아이폰 16 프로 맥스","iPhone17,5":"아이폰 16e","iPhone18,3":"아이폰 17","iPhone18,4":"아이폰 에어","iPhone18,1":"아이폰 17 프로","iPhone18,2":"아이폰 17 프로 맥스","iPhone18,5":"아이폰 17e",
@@ -66,6 +67,7 @@
             "SM-T280":"갤럭시 탭 A 7.0","SM-T380":"갤럭시 탭 A 8.0","SM-T500":"갤럭시 탭 A7","SM-T505":"갤럭시 탭 A7 (LTE)","SM-X200":"갤럭시 탭 A8","SM-X205":"갤럭시 탭 A8 (LTE)","SM-X110":"갤럭시 탭 A9","SM-X210":"갤럭시 탭 A9+","SM-X215":"갤럭시 탭 A9+ (5G)","SM-T375":"갤럭시 탭 E 8.0","SM-T560":"갤럭시 탭 E 9.6"
         };
 
+        // 검색을 위한 대소문자 변환 인덱스 세팅 (이 아래 코드는 수정 불필요)
         const dbUpperCase = {};
         for (let key in rawDb) {
             dbUpperCase[key.toUpperCase()] = rawDb[key];
@@ -80,6 +82,7 @@
             
             let found = dbUpperCase[searchKey];
 
+            // SM- 통신사 뒷자리 제거 및 매칭 로직
             if (!found) {
                 let match = searchKey.match(/^(SM-[A-Z]+[0-9]+)/);
                 if (match) {
@@ -99,22 +102,33 @@
                 
                 let wikiSearch = found;
                 
+                // 나무위키 링크 스마트 변환 로직
                 if (wikiSearch.includes("아이패드")) {
                     wikiSearch = wikiSearch.replace(/아이패드/g, "iPad").replace(/프로/g, "Pro").replace(/에어/g, "Air").replace(/미니/g, "mini");
-                    wikiSearch = wikiSearch.replace(/\(M(\d)\)/, "(M$1 모델)");
-                    wikiSearch = wikiSearch.replace(/\s+\(/g, "(");
+                    wikiSearch = wikiSearch.replace(/\s*\(M(\d)\)/, "(M$1 모델)");
+                    wikiSearch = wikiSearch.replace(/\s+\(/g, "("); // 괄호 앞 공백 제거
+                    
+                    // 1세대 특수 처리 (나무위키는 1세대를 표기하지 않음)
                     if (wikiSearch === "iPad Air(1세대)") wikiSearch = "iPad Air";
                     if (wikiSearch === "iPad mini(1세대)") wikiSearch = "iPad mini";
+                    if (wikiSearch === "iPad(1세대)") wikiSearch = "iPad";
                 } else if (wikiSearch.includes("아이폰")) {
                     wikiSearch = wikiSearch.replace(/아이폰/g, "iPhone").replace(/프로/g, "Pro").replace(/맥스/g, "Max").replace(/플러스/g, "Plus").replace(/미니/g, "mini").replace(/에어/g, "Air");
                     wikiSearch = wikiSearch.replace(/\s+\(/g, "(");
+                    
+                    // SE 1세대 특수 처리
+                    if (wikiSearch === "iPhone SE(1세대)") wikiSearch = "iPhone SE";
+                    // 아이폰 1세대 특수 처리 (나무위키는 괄호를 붙임)
+                    if (wikiSearch === "iPhone(1세대)") wikiSearch = "iPhone(1세대)";
                 } else {
+                    // 삼성 기기 처리
                     wikiSearch = wikiSearch.split('(')[0].trim();
                     if (wikiSearch.includes("갤럭시")) {
-                        // 1. 공백 제거 정비 (노트 20 -> 노트20, 폴드 6 -> 폴드6)
+                        // 노트/폴드 띄어쓰기 정비
                         wikiSearch = wikiSearch.replace(/폴드\s*(\d)/, '폴드$1').replace(/플립\s*(\d)/, '플립$1').replace(/노트\s*(\d)/, '노트$1');
-                        // 2. 나무위키 영문 변환 (울트라는 Ultra로, 엣지는 엣지로 유지!)
+                        // 수식어 영문 변환 (울트라, 플러스)
                         wikiSearch = wikiSearch.replace(/울트라/g, 'Ultra').replace(/플러스/g, '+');
+                        // 엣지는 나무위키에서도 한글 '엣지'를 쓰므로 그대로 둡니다.
                     }
                 }
 
