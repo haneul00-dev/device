@@ -33,12 +33,12 @@
             <span class="info-title">🔍 2026. 04 시점 기준 DB</span>
             <p class="info-text">
                 🍎 <b>애플:</b> 아이폰 1세대 ~ 17 전 시리즈, 아이패드 전체<br>
-                🔹 <b>삼성 폰:</b> S/Note/Z/A/M/J 보급형 및 파생 모델 100%<br>
-                💻 <b>삼성 탭:</b> 탭 S/A/E (초기형 ~ 최신 S11 울트라 포함)
+                🔹 <b>삼성 폰:</b> S/Note/Z/A/M/J 보급형 및 통신사 파생 전체<br>
+                💻 <b>삼성 탭:</b> 탭 S/A/E (Wi-Fi 및 LTE 전 라인업 포함)
             </p>
         </div>
         <div class="search-box">
-            <input type="text" id="q" placeholder="예: iPhone17,5 또는 SM-T810S" onfocus="this.value=''" onkeypress="if(event.keyCode==13) find()">
+            <input type="text" id="q" placeholder="예: iPhone17,5 또는 SM-T815" onclick="this.value=''" onkeypress="if(event.keyCode==13) find()">
             <button onclick="find()">조회하기</button>
         </div>
         <div id="result">
@@ -53,16 +53,19 @@
             "iPhone1,1":"아이폰 (1세대)","iPhone1,2":"아이폰 3G","iPhone2,1":"아이폰 3GS","iPhone3,1":"아이폰 4","iPhone3,2":"아이폰 4","iPhone3,3":"아이폰 4","iPhone4,1":"아이폰 4s","iPhone5,1":"아이폰 5","iPhone5,2":"아이폰 5","iPhone5,3":"아이폰 5c","iPhone5,4":"아이폰 5c","iPhone6,1":"아이폰 5s","iPhone6,2":"아이폰 5s","iPhone7,2":"아이폰 6","iPhone7,1":"아이폰 6 플러스","iPhone8,1":"아이폰 6s","iPhone8,2":"아이폰 6s 플러스","iPhone8,4":"아이폰 SE (1세대)","iPhone9,1":"아이폰 7","iPhone9,3":"아이폰 7","iPhone9,2":"아이폰 7 플러스","iPhone9,4":"아이폰 7 플러스","iPhone10,1":"아이폰 8","iPhone10,4":"아이폰 8","iPhone10,2":"아이폰 8 플러스","iPhone10,5":"아이폰 8 플러스","iPhone10,3":"아이폰 X","iPhone10,6":"아이폰 X","iPhone11,8":"아이폰 XR","iPhone11,2":"아이폰 XS","iPhone11,4":"아이폰 XS 맥스","iPhone11,6":"아이폰 XS 맥스","iPhone12,1":"아이폰 11","iPhone12,3":"아이폰 11 프로","iPhone12,5":"아이폰 11 프로 맥스","iPhone12,8":"아이폰 SE (2세대)","iPhone13,1":"아이폰 12 미니","iPhone13,2":"아이폰 12","iPhone13,3":"아이폰 12 프로","iPhone13,4":"아이폰 12 프로 맥스","iPhone14,4":"아이폰 13 미니","iPhone14,5":"아이폰 13","iPhone14,2":"아이폰 13 프로","iPhone14,3":"아이폰 13 프로 맥스","iPhone14,6":"아이폰 SE (3세대)","iPhone14,7":"아이폰 14","iPhone14,8":"아이폰 14 플러스","iPhone15,2":"아이폰 14 프로","iPhone15,3":"아이폰 14 프로 맥스","iPhone15,4":"아이폰 15","iPhone15,5":"아이폰 15 플러스","iPhone16,1":"아이폰 15 프로","iPhone16,2":"아이폰 15 프로 맥스","iPhone17,3":"아이폰 16","iPhone17,4":"아이폰 16 플러스","iPhone17,1":"아이폰 16 프로","iPhone17,2":"아이폰 16 프로 맥스","iPhone17,5":"아이폰 16e","iPhone18,3":"아이폰 17","iPhone18,4":"아이폰 17 에어","iPhone18,1":"아이폰 17 프로","iPhone18,2":"아이폰 17 프로 맥스","iPhone18,5":"아이폰 17e",
             
             /* === [Apple iPad] === */
-            "iPad1,1":"아이패드 (1세대)","iPad2,1":"아이패드 2","iPad2,5":"아이패드 미니 (1세대)","iPad3,1":"아이패드 (3세대)","iPad3,4":"아이패드 (4세대)","iPad4,1":"아이패드 에어 (1세대)","iPad4,4":"아이패드 미니 2","iPad4,7":"아이패드 미니 3","iPad5,1":"아이패드 미니 4","iPad5,3":"아이패드 에어 2","iPad6,3":"아이패드 프로 9.7","iPad6,7":"아이패드 프로 12.9 (1세대)","iPad6,11":"아이패드 (5세대)","iPad7,1":"아이패드 프로 12.9 (2세대)","iPad7,3":"아이패드 프로 10.5","iPad7,5":"아이패드 (6세대)","iPad7,11":"아이패드 (7세대)","iPad8,1":"아이패드 프로 11 (1세대)","iPad8,5":"아이패드 프로 12.9 (3세대)","iPad8,9":"아이패드 프로 11 (2세대)","iPad8,11":"아이패드 프로 12.9 (4세대)","iPad11,1":"아이패드 미니 (5세대)","iPad11,3":"아이패드 에어 (3세대)","iPad11,6":"아이패드 (8세대)","iPad12,1":"아이패드 (9세대)","iPad13,1":"아이패드 에어 (4세대)","iPad13,4":"아이패드 프로 11 (3세대)","iPad13,8":"아이패드 프로 12.9 (5세대)","iPad13,16":"아이패드 에어 (5세대)","iPad13,18":"아이패드 (10세대)","iPad14,1":"아이패드 미니 (6세대)","iPad14,3":"아이패드 프로 11 (4세대)","iPad14,5":"아이패드 프로 12.9 (6세대)","iPad14,8":"아이패드 에어 11 (M2)","iPad14,10":"아이패드 에어 13 (M2)","iPad16,3":"아이패드 프로 11 (M4)","iPad16,5":"아이패드 프로 13 (M4)","iPad17,1":"아이패드 에어 11 (M4)","iPad17,2":"아이패드 에어 13 (M4)",
+            "iPad1,1":"아이패드 (1세대)","iPad2,1":"아이패드 2","iPad2,5":"아이패드 미니 (1세대)","iPad3,1":"아이패드 (3세대)","iPad3,4":"아이패드 (4세대)","iPad4,1":"아이패드 에어 (1세대)","iPad4,4":"아이패드 미니 2","iPad4,7":"아이패드 미니 3","iPad5,1":"아이패드 미니 4","iPad5,3":"아이패드 에어 2","iPad6,3":"아이패드 프로 9.7","iPad6,7":"아이패드 프로 12.9 (1세대)","iPad6,11":"아이패드 (5세대)","iPad7,1":"아이패드 프로 12.9 (2세대)","iPad7,3":"아이패드 프로 10.5","iPad7,5":"아이패드 (6세대)","iPad7,11":"아이패드 (7세대)","iPad8,1":"아이패드 프로 11 (1세대)","iPad8,5":"아이패드 프로 12.9 (3세대)","iPad8,9":"아이패드 프로 11 (2세대)","iPad8,11":"아이패드 프로 12.9 (4세대)","iPad11,1":"아이패드 미니 (5세대)","iPad11,3":"아이패드 에어 (3세대)","iPad11,6":"아이패드 (8세대)","iPad12,1":"아이패드 (9세대)","iPad13,1":"아이패드 에어 (4세대)","iPad13,4":"아이패드 프로 11 (3세대)","iPad13,8":"아이패드 프로 12.9 (5세대)","iPad13,16":"아이패드 에어 (5세대)","iPad13,18":"아이패드 (10세대)","iPad14,1":"아이패드 미니 (6세대)","iPad14,3":"아이패드 프로 11 (4세대)","iPad14,5":"아이패드 프로 12.9 (6세대)","iPad14,8":"아이패드 에어 11 (M2)","iPad14,10":"아이패드 에어 13 (M2)","iPad16,3":"아이패드 프로 11 (M4)","iPad16,5":"아이패드 프로 13 (M4)","iPad17,1":"아이패드 에어 11 (M2)","iPad17,2":"아이패드 에어 13 (M2)",
             
             /* === [Samsung Galaxy S/Note/Z] === */
             "SHW-M110S":"갤럭시 S","SHW-M250S":"갤럭시 S2","SHV-E210S":"갤럭시 S3","SHV-E330S":"갤럭시 S4","SM-G900S":"갤럭시 S5","SM-G906S":"갤럭시 S5 광대역 LTE-A","SM-G920N":"갤럭시 S6","SM-G925N":"갤럭시 S6 엣지","SM-G928N":"갤럭시 S6 엣지+","SM-G930N":"갤럭시 S7","SM-G935N":"갤럭시 S7 엣지","SM-G950N":"갤럭시 S8","SM-G955N":"갤럭시 S8+","SM-G960N":"갤럭시 S9","SM-G965N":"갤럭시 S9+","SM-G970N":"갤럭시 S10e","SM-G973N":"갤럭시 S10","SM-G975N":"갤럭시 S10+","SM-G977N":"갤럭시 S10 5G","SM-G981N":"갤럭시 S20","SM-G986N":"갤럭시 S20+","SM-G988N":"갤럭시 S20 울트라","SM-G781N":"갤럭시 S20 FE","SM-G991N":"갤럭시 S21","SM-G996N":"갤럭시 S21+","SM-G998N":"갤럭시 S21 울트라","SM-G990N":"갤럭시 S21 FE","SM-S901N":"갤럭시 S22","SM-S906N":"갤럭시 S22+","SM-S908N":"갤럭시 S22 울트라","SM-S911N":"갤럭시 S23","SM-S916N":"갤럭시 S23+","SM-S918N":"갤럭시 S23 울트라","SM-S711N":"갤럭시 S23 FE","SM-S921N":"갤럭시 S24","SM-S926N":"갤럭시 S24+","SM-S928N":"갤럭시 S24 울트라","SM-S721N":"갤럭시 S24 FE","SM-S931N":"갤럭시 S25","SM-S935N":"갤럭시 S25 엣지","SM-S936N":"갤럭시 S25+","SM-S938N":"갤럭시 S25 울트라","SM-S941N":"갤럭시 S26","SM-S946N":"갤럭시 S26+","SM-S948N":"갤럭시 S26 울트라",
             "SHV-E160S":"갤럭시 노트","SHV-E250S":"갤럭시 노트 2","SM-N900S":"갤럭시 노트 3","SM-N910S":"갤럭시 노트 4","SM-N915S":"갤럭시 노트 엣지","SM-N920N":"갤럭시 노트 5","SM-N930N":"갤럭시 노트 7","SM-N935S":"갤럭시 노트 FE","SM-N950N":"갤럭시 노트 8","SM-N960N":"갤럭시 노트 9","SM-N971N":"갤럭시 노트 10","SM-N976N":"갤럭시 노트 10+","SM-N770F":"갤럭시 노트 10 Lite","SM-N981N":"갤럭시 노트 20","SM-N986N":"갤럭시 노트 20 울트라",
             "SM-F900N":"갤럭시 폴드","SM-F916N":"갤럭시 Z 폴드 2","SM-F926N":"갤럭시 Z 폴드 3","SM-F936N":"갤럭시 Z 폴드 4","SM-F946N":"갤럭시 Z 폴드 5","SM-F956N":"갤럭시 Z 폴드 6","SM-F966N":"갤럭시 Z 폴드 7","SM-F700N":"갤럭시 Z 플립","SM-F707N":"갤럭시 Z 플립 5G","SM-F711N":"갤럭시 Z 플립 3","SM-F721N":"갤럭시 Z 플립 4","SM-F731N":"갤럭시 Z 플립 5","SM-F741N":"갤럭시 Z 플립 6","SM-F751N":"갤럭시 Z 플립 7",
             
-            /* === [Samsung Galaxy A/M/J/Tab] === */
-            "SM-A105N":"갤럭시 A10","SM-A205N":"갤럭시 A20","SM-A305N":"갤럭시 A30","SM-A405N":"갤럭시 A40","SM-A505N":"갤럭시 A50","SM-A805N":"갤럭시 A80","SM-A908N":"갤럭시 A90 5G","SM-A125N":"갤럭시 A12","SM-A226L":"갤럭시 A22 (버디)","SM-A325N":"갤럭시 A32","SM-A426N":"갤럭시 A42","SM-A525N":"갤럭시 A52","SM-A526N":"갤럭시 A52s 5G","SM-A826N":"갤럭시 A82 (퀀텀 2)","SM-A135N":"갤럭시 A13","SM-A235N":"갤럭시 A23","SM-A336N":"갤럭시 A33 5G","SM-A536N":"갤럭시 A53 5G","SM-A736B":"갤럭시 A73 5G","SM-A146P":"갤럭시 A14","SM-A245N":"갤럭시 A24","SM-A346N":"갤럭시 A34 5G","SM-A546N":"갤럭시 A54 5G (퀀텀 4)","SM-A156N":"갤럭시 A15 5G","SM-A256N":"갤럭시 A25 5G","SM-A356N":"갤럭시 A35 5G","SM-A556N":"갤럭시 A55 5G (퀀텀 5)","SM-A166N":"갤럭시 A16 5G","SM-A366N":"갤럭시 A36 5G","SM-A566N":"갤럭시 A56 5G (퀀텀 6)","SM-M127N":"갤럭시 M12","SM-M236L":"갤럭시 M23 (버디 2)","SM-M336K":"갤럭시 M33 (점프 2)","SM-M536K":"갤럭시 M53 (점프 3)","SM-J530S":"갤럭시 J5","SM-J730S":"갤럭시 J7",
-            "SM-T700":"갤럭시 탭 S 8.4","SM-T800":"갤럭시 탭 S 10.5","SM-T710":"갤럭시 탭 S2 8.0","SM-T810":"갤럭시 탭 S2 9.7","SM-T820":"갤럭시 탭 S3","SM-T830":"갤럭시 탭 S4","SM-T720":"갤럭시 탭 S5e","SM-T860":"갤럭시 탭 S6","SM-P610":"갤럭시 탭 S6 Lite","SM-T870":"갤럭시 탭 S7","SM-T970":"갤럭시 탭 S7+","SM-T733":"갤럭시 탭 S7 FE","SM-X700":"갤럭시 탭 S8","SM-X800":"갤럭시 탭 S8+","SM-X900":"갤럭시 탭 S8 울트라","SM-X710":"갤럭시 탭 S9","SM-X810":"갤럭시 탭 S9+","SM-X910":"갤럭시 탭 S9 울트라","SM-X510":"갤럭시 탭 S9 FE","SM-X610":"갤럭시 탭 S9 FE+","SM-X820":"갤럭시 탭 S10+","SM-X926N":"갤럭시 탭 S10 울트라","SM-X736N":"갤럭시 탭 S11","SM-X836N":"갤럭시 탭 S11+","SM-X936N":"갤럭시 탭 S11 울트라","SM-T280":"갤럭시 탭 A 7.0","SM-T380":"갤럭시 탭 A 8.0","SM-T550":"갤럭시 탭 A 9.7","SM-T580":"갤럭시 탭 A 10.1","SM-T590":"갤럭시 탭 A 10.5","SM-T290":"갤럭시 탭 A 8.0 (2019)","SM-T500":"갤럭시 탭 A7","SM-T220":"갤럭시 탭 A7 Lite","SM-X200":"갤럭시 탭 A8","SM-X110":"갤럭시 탭 A9","SM-X210":"갤럭시 탭 A9+","SM-T375":"갤럭시 탭 E 8.0","SM-T560":"갤럭시 탭 E 9.6"
+            /* === [Samsung Galaxy A/M/J & Tablet 보강본] === */
+            "SM-A105N":"갤럭시 A10","SM-A205N":"갤럭시 A20","SM-A305N":"갤럭시 A30","SM-A505N":"갤럭시 A50","SM-A125N":"갤럭시 A12","SM-A226L":"갤럭시 A22 (버디)","SM-A325N":"갤럭시 A32","SM-A426N":"갤럭시 A42","SM-A525N":"갤럭시 A52","SM-A526N":"갤럭시 A52s 5G","SM-A826N":"갤럭시 A82 (퀀텀 2)","SM-A245N":"갤럭시 A24","SM-A346N":"갤럭시 A34 5G","SM-A546N":"갤럭시 A54 5G (퀀텀 4)","SM-A156N":"갤럭시 A15 5G","SM-A256N":"갤럭시 A25 5G","SM-A356N":"갤럭시 A35 5G","SM-A556N":"갤럭시 A55 5G (퀀텀 5)","SM-A166N":"갤럭시 A16 5G","SM-A366N":"갤럭시 A36 5G","SM-A566N":"갤럭시 A56 5G (퀀텀 6)","SM-M336K":"갤럭시 M33 (점프 2)","SM-M536K":"갤럭시 M53 (점프 3)",
+            
+            /* 태블릿은 Wi-Fi(0)와 셀룰러(5,6,7) 파생 모델을 모두 기입하여 매칭 버그 원천 차단 */
+            "SM-T700":"갤럭시 탭 S 8.4","SM-T705":"갤럭시 탭 S 8.4 (LTE)","SM-T800":"갤럭시 탭 S 10.5","SM-T805":"갤럭시 탭 S 10.5 (LTE)","SM-T710":"갤럭시 탭 S2 8.0","SM-T715":"갤럭시 탭 S2 8.0 (LTE)","SM-T810":"갤럭시 탭 S2 9.7","SM-T815":"갤럭시 탭 S2 9.7 (LTE)","SM-T820":"갤럭시 탭 S3","SM-T825":"갤럭시 탭 S3 (LTE)","SM-T830":"갤럭시 탭 S4","SM-T835":"갤럭시 탭 S4 (LTE)","SM-T720":"갤럭시 탭 S5e","SM-T725":"갤럭시 탭 S5e (LTE)","SM-T860":"갤럭시 탭 S6","SM-T865":"갤럭시 탭 S6 (LTE)","SM-T866N":"갤럭시 탭 S6 (5G)","SM-P610":"갤럭시 탭 S6 Lite","SM-P615":"갤럭시 탭 S6 Lite (LTE)","SM-T870":"갤럭시 탭 S7","SM-T875":"갤럭시 탭 S7 (LTE)","SM-T970":"갤럭시 탭 S7+","SM-T975":"갤럭시 탭 S7+ (LTE)","SM-T976":"갤럭시 탭 S7+ (5G)","SM-T730":"갤럭시 탭 S7 FE","SM-T733":"갤럭시 탭 S7 FE (Wi-Fi)","SM-T735":"갤럭시 탭 S7 FE (LTE)","SM-T736":"갤럭시 탭 S7 FE (5G)","SM-X700":"갤럭시 탭 S8","SM-X706":"갤럭시 탭 S8 (5G)","SM-X800":"갤럭시 탭 S8+","SM-X806":"갤럭시 탭 S8+ (5G)","SM-X900":"갤럭시 탭 S8 울트라","SM-X906":"갤럭시 탭 S8 울트라 (5G)","SM-X710":"갤럭시 탭 S9","SM-X716":"갤럭시 탭 S9 (5G)","SM-X810":"갤럭시 탭 S9+","SM-X816":"갤럭시 탭 S9+ (5G)","SM-X910":"갤럭시 탭 S9 울트라","SM-X916":"갤럭시 탭 S9 울트라 (5G)","SM-X510":"갤럭시 탭 S9 FE","SM-X516":"갤럭시 탭 S9 FE (5G)","SM-X610":"갤럭시 탭 S9 FE+","SM-X616":"갤럭시 탭 S9 FE+ (5G)","SM-X820":"갤럭시 탭 S10+","SM-X826":"갤럭시 탭 S10+ (5G)","SM-X920":"갤럭시 탭 S10 울트라","SM-X926N":"갤럭시 탭 S10 울트라 (5G)","SM-X730":"갤럭시 탭 S11","SM-X736":"갤럭시 탭 S11 (5G)","SM-X830":"갤럭시 탭 S11+","SM-X836":"갤럭시 탭 S11+ (5G)","SM-X930":"갤럭시 탭 S11 울트라","SM-X936":"갤럭시 탭 S11 울트라 (5G)","SM-X936N":"갤럭시 탭 S11 울트라 (5G)",
+            "SM-T280":"갤럭시 탭 A 7.0","SM-T380":"갤럭시 탭 A 8.0","SM-T500":"갤럭시 탭 A7","SM-T505":"갤럭시 탭 A7 (LTE)","SM-X200":"갤럭시 탭 A8","SM-X205":"갤럭시 탭 A8 (LTE)","SM-X110":"갤럭시 탭 A9","SM-X210":"갤럭시 탭 A9+","SM-X215":"갤럭시 탭 A9+ (5G)"
         };
 
         const dbUpperCase = {};
@@ -72,20 +75,19 @@
 
         function find() {
             let originalInput = document.getElementById('q').value.trim();
-            if (!originalInput) return; // 빈칸 검색 방지
+            if (!originalInput) return;
 
             let searchKey = originalInput.toUpperCase();
             let resDiv = document.getElementById('result');
             
-            // 1. 1차 정밀 검색
+            // 1차 검색
             let found = dbUpperCase[searchKey];
 
-            // 2. 2차 유연 검색 (강력한 통신사 매칭 정규식 적용)
-            // SM-T810S, SM-G973K 등 입력 시 "SM-"과 "영어+숫자" 조합(기본 모델명)만 추출하여 매칭
+            // 2차 유연 검색: SM- 뒤에 영문+숫자 기본형 추출 (통신사 K,S,L,N 등 잘라내기)
             if (!found) {
-                let match = searchKey.match(/^(SM-[A-Z][0-9]+)/);
+                let match = searchKey.match(/^(SM-[A-Z]+[0-9]+)/);
                 if (match) {
-                    let base = match[1]; // 예: SM-T810S -> SM-T810 만 추출
+                    let base = match[1]; 
                     for (let key in dbUpperCase) { 
                         if (key.startsWith(base)) { 
                             found = dbUpperCase[key]; 
@@ -99,27 +101,41 @@
                 document.getElementById('resN').innerText = found;
                 document.getElementById('resI').innerText = originalInput;
                 
-                // 3. 나무위키 스마트 변환 (404 에러 원천 차단)
+                // [핵심] 나무위키 404 방지용 스마트 링크 변환
                 let wikiSearch = found.split('(')[0].trim();
-                
-                // 애플 제품: 나무위키 영문 기준에 맞게 변환
-                if (wikiSearch.includes("아이패드")) {
-                    if (wikiSearch.includes("프로")) wikiSearch = "iPad Pro";
-                    else if (wikiSearch.includes("에어")) wikiSearch = "iPad Air";
-                    else if (wikiSearch.includes("미니")) wikiSearch = "iPad mini";
-                    else wikiSearch = "iPad";
-                } else if (wikiSearch.includes("아이폰")) {
-                    wikiSearch = wikiSearch.replace(/아이폰/g, "iPhone").replace(/프로/g, "Pro").replace(/맥스/g, "Max").replace(/플러스/g, "Plus").replace(/미니/g, "mini").replace(/에어/g, "Air");
-                }
-                
-                // 삼성 폴드/플립 띄어쓰기 정비 (예: Z 폴드 6 -> Z 폴드6)
-                wikiSearch = wikiSearch.replace(/폴드\s+(\d)/, '폴드$1');
-                wikiSearch = wikiSearch.replace(/플립\s+(\d)/, '플립$1');
+                let wikiUrl = "https://namu.wiki/w/" + encodeURIComponent(wikiSearch);
 
-                document.getElementById('wikiBtn').href = "https://namu.wiki/w/" + encodeURIComponent(wikiSearch);
+                if (found.includes("아이패드")) {
+                    // 애플 기기명 나무위키 100% 매칭
+                    if (found.includes("에어 11") || found.includes("에어 13")) {
+                        wikiUrl = "https://namu.wiki/w/iPad%20Air(M2%20모델)";
+                    } else if (found.includes("프로 11 (M4)") || found.includes("프로 13 (M4)")) {
+                        wikiUrl = "https://namu.wiki/w/iPad%20Pro(M4%20모델)";
+                    } else if (found.includes("미니")) {
+                        let gen = found.match(/\d세대/);
+                        wikiUrl = "https://namu.wiki/w/iPad%20mini" + (gen ? "(" + gen[0] + ")" : "");
+                    } else if (found.includes("에어")) {
+                        let gen = found.match(/\d세대/);
+                        wikiUrl = "https://namu.wiki/w/iPad%20Air" + (gen ? "(" + gen[0] + ")" : "");
+                    } else if (found.includes("프로")) {
+                        wikiUrl = "https://namu.wiki/w/iPad%20Pro";
+                    } else {
+                        let gen = found.match(/\d세대/);
+                        wikiUrl = "https://namu.wiki/w/iPad" + (gen ? "(" + gen[0] + ")" : "");
+                    }
+                } else if (found.includes("아이폰")) {
+                    wikiSearch = found.replace(/아이폰/g, "iPhone").replace(/프로/g, "Pro").replace(/맥스/g, "Max").replace(/플러스/g, "Plus").replace(/미니/g, "mini").replace(/에어/g, "Air");
+                    wikiUrl = "https://namu.wiki/w/" + encodeURIComponent(wikiSearch);
+                } else if (found.includes("갤럭시 Z")) {
+                    // 폴드 6 -> 폴드6 띄어쓰기 변환
+                    wikiSearch = wikiSearch.replace(/폴드\s*(\d)/, '폴드$1').replace(/플립\s*(\d)/, '플립$1');
+                    wikiUrl = "https://namu.wiki/w/" + encodeURIComponent(wikiSearch);
+                }
+
+                document.getElementById('wikiBtn').href = wikiUrl;
                 resDiv.style.display = 'block';
             } else {
-                alert("해당 기기는 DB에 등록되지 않았거나 번호가 정확하지 않습니다.");
+                alert("해당 기기는 DB에 없거나 번호가 정확하지 않습니다.\n입력 코드를 다시 확인해 주세요.");
                 resDiv.style.display = 'none';
             }
         }
