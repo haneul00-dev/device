@@ -1,144 +1,32 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>기기 사양 조회 마스터 - 하늘</title>
-    <style>
-        :root { --blue: #0071e3; --bg: #f5f5f7; }
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 60px 20px; margin: 0; }
-        .container { max-width: 500px; width: 100%; text-align: center; }
-        h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: #1d1d1f; letter-spacing: -0.5px; }
-        .info-box { background: #ffffff; padding: 22px; border-radius: 18px; margin-bottom: 25px; line-height: 1.6; border: 1px solid #e5e5ea; text-align: left; box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
-        .info-title { font-size: 14px; font-weight: 700; color: #1d1d1f; margin-bottom: 12px; display: block; border-bottom: 2px solid #f5f5f7; padding-bottom: 8px; }
-        .info-text { font-size: 13px; color: #424245; margin: 0; }
-        .search-box { background: white; padding: 30px; border-radius: 24px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); margin-bottom: 30px; }
-        input { width: 85%; padding: 16px; border: 1px solid #d2d2d7; border-radius: 14px; font-size: 17px; outline: none; transition: border-color 0.2s; }
-        input:focus { border-color: var(--blue); }
-        button { width: 93%; padding: 16px; background: var(--blue); color: white; border: none; border-radius: 14px; cursor: pointer; margin-top: 15px; font-weight: 600; font-size: 17px; transition: opacity 0.2s; }
-        button:hover { opacity: 0.9; }
-        #result { display: none; background: white; padding: 35px; border-radius: 24px; box-shadow: 0 10px 40px rgba(0,0,0,0.08); text-align: left; animation: fadeInUp 0.4s ease-out; }
-        .spec-item { margin-bottom: 18px; border-bottom: 1px solid #f5f5f7; padding-bottom: 12px; }
-        .label { font-size: 12px; color: #86868b; display: block; margin-bottom: 4px; text-transform: uppercase; font-weight: 600; }
-        .value { font-size: 19px; font-weight: 700; color: #1d1d1f; }
-        .wiki-link { display: inline-block; margin-top: 15px; padding: 15px 20px; background: #00a495; color: white; text-decoration: none; border-radius: 12px; font-weight: 600; font-size: 15px; transition: background 0.2s; text-align: center; width: 85%; }
-        .wiki-link:hover { background: #008577; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>기기 사양 조회 마스터</title>
+<style>
+:root{--blue:#0071e3;--bg:#f5f5f7}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);display:flex;flex-direction:column;align-items:center;padding:60px 20px;margin:0}.container{max-width:500px;width:100%;text-align:center}h1{font-size:28px;font-weight:700;margin-bottom:8px;color:#1d1d1f;letter-spacing:-.5px}.info-box{background:#fff;padding:22px;border-radius:18px;margin-bottom:25px;line-height:1.6;border:1px solid #e5e5ea;text-align:left;box-shadow:0 4px 15px rgba(0,0,0,.03)}.info-title{font-size:14px;font-weight:700;color:#1d1d1f;margin-bottom:12px;display:block;border-bottom:2px solid #f5f5f7;padding-bottom:8px}.info-text{font-size:13px;color:#424245;margin:0}.search-box{background:#fff;padding:30px;border-radius:24px;box-shadow:0 4px 20px rgba(0,0,0,.04);margin-bottom:30px}input{width:85%;padding:16px;border:1px solid #d2d2d7;border-radius:14px;font-size:17px;outline:0;transition:border-color .2s}input:focus{border-color:var(--blue)}button{width:93%;padding:16px;background:var(--blue);color:#fff;border:none;border-radius:14px;cursor:pointer;margin-top:15px;font-weight:600;font-size:17px;transition:opacity .2s}button:hover{opacity:.9}#result{display:none;background:#fff;padding:35px;border-radius:24px;box-shadow:0 10px 40px rgba(0,0,0,.08);text-align:left;animation:fadeInUp .4s ease-out}.spec-item{margin-bottom:18px;border-bottom:1px solid #f5f5f7;padding-bottom:12px}.label{font-size:12px;color:#86868b;display:block;margin-bottom:4px;text-transform:uppercase;font-weight:600}.value{font-size:19px;font-weight:700;color:#1d1d1f}.wiki-link{display:inline-block;margin-top:15px;padding:15px 20px;background:#00a495;color:#fff;text-decoration:none;border-radius:12px;font-weight:600;font-size:15px;transition:background .2s;text-align:center;width:85%}.wiki-link:hover{background:#008577}@keyframes fadeInUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>📱 기기 사양 조회 마스터</h1>
-        <div class="info-box">
-            <span class="info-title">🔍 2026. 04 시점 기준 DB</span>
-            <p class="info-text">
-                🍎 <b>애플:</b> 아이폰 1세대 ~ 17 전 시리즈, 아이패드 전체<br>
-                🔹 <b>삼성 폰:</b> S/Note/Z/A/M/J 보급형 및 통신사 파생 전체<br>
-                💻 <b>삼성 탭:</b> 탭 S/A/E (Wi-Fi 및 LTE 전 라인업 포함)
-            </p>
-        </div>
-        <div class="search-box">
-            <input type="text" id="q" placeholder="예: SM-N920N 또는 iPhone8,4" onfocus="this.value=''" onkeypress="if(event.keyCode==13) find()">
-            <button onclick="find()">조회하기</button>
-        </div>
-        <div id="result">
-            <div class="spec-item"><span class="label">정식 모델명</span><span id="resN" class="value">-</span></div>
-            <div class="spec-item"><span class="label">식별코드 / 모델번호</span><span id="resI" class="value">-</span></div>
-            <a id="wikiBtn" href="#" target="_blank" class="wiki-link">🌳 나무위키 상세 정보 보기</a>
-        </div>
-    </div>
-    <script>
-        // 향후 업데이트 시 아래 rawDb 내용만 수정하거나 한 줄씩 추가하시면 됩니다!
-        const rawDb = {
-            /* === [Apple iPhone] === */
-            "iPhone1,1":"아이폰 (1세대)","iPhone1,2":"아이폰 3G","iPhone2,1":"아이폰 3GS","iPhone3,1":"아이폰 4","iPhone3,2":"아이폰 4","iPhone3,3":"아이폰 4","iPhone4,1":"아이폰 4s","iPhone5,1":"아이폰 5","iPhone5,2":"아이폰 5","iPhone5,3":"아이폰 5c","iPhone5,4":"아이폰 5c","iPhone6,1":"아이폰 5s","iPhone6,2":"아이폰 5s","iPhone7,2":"아이폰 6","iPhone7,1":"아이폰 6 플러스","iPhone8,1":"아이폰 6s","iPhone8,2":"아이폰 6s 플러스","iPhone8,4":"아이폰 SE (1세대)","iPhone9,1":"아이폰 7","iPhone9,3":"아이폰 7","iPhone9,2":"아이폰 7 플러스","iPhone9,4":"아이폰 7 플러스","iPhone10,1":"아이폰 8","iPhone10,4":"아이폰 8","iPhone10,2":"아이폰 8 플러스","iPhone10,5":"아이폰 8 플러스","iPhone10,3":"아이폰 X","iPhone10,6":"아이폰 X","iPhone11,8":"아이폰 XR","iPhone11,2":"아이폰 XS","iPhone11,4":"아이폰 XS 맥스","iPhone11,6":"아이폰 XS 맥스","iPhone12,1":"아이폰 11","iPhone12,3":"아이폰 11 프로","iPhone12,5":"아이폰 11 프로 맥스","iPhone12,8":"아이폰 SE (2세대)","iPhone13,1":"아이폰 12 미니","iPhone13,2":"아이폰 12","iPhone13,3":"아이폰 12 프로","iPhone13,4":"아이폰 12 프로 맥스","iPhone14,4":"아이폰 13 미니","iPhone14,5":"아이폰 13","iPhone14,2":"아이폰 13 프로","iPhone14,3":"아이폰 13 프로 맥스","iPhone14,6":"아이폰 SE (3세대)","iPhone14,7":"아이폰 14","iPhone14,8":"아이폰 14 플러스","iPhone15,2":"아이폰 14 프로","iPhone15,3":"아이폰 14 프로 맥스","iPhone15,4":"아이폰 15","iPhone15,5":"아이폰 15 플러스","iPhone16,1":"아이폰 15 프로","iPhone16,2":"아이폰 15 프로 맥스","iPhone17,3":"아이폰 16","iPhone17,4":"아이폰 16 플러스","iPhone17,1":"아이폰 16 프로","iPhone17,2":"아이폰 16 프로 맥스","iPhone17,5":"아이폰 16e","iPhone18,3":"아이폰 17","iPhone18,4":"아이폰 에어","iPhone18,1":"아이폰 17 프로","iPhone18,2":"아이폰 17 프로 맥스","iPhone18,5":"아이폰 17e",
-            
-            /* === [Apple iPad] === */
-            "iPad1,1":"아이패드 (1세대)","iPad2,1":"아이패드 2","iPad2,5":"아이패드 미니 (1세대)","iPad3,1":"아이패드 (3세대)","iPad3,4":"아이패드 (4세대)","iPad4,1":"아이패드 에어 (1세대)","iPad4,4":"아이패드 미니 2","iPad4,7":"아이패드 미니 3","iPad5,1":"아이패드 미니 4","iPad5,3":"아이패드 에어 2","iPad6,3":"아이패드 프로 9.7","iPad6,7":"아이패드 프로 12.9 (1세대)","iPad6,11":"아이패드 (5세대)","iPad7,1":"아이패드 프로 12.9 (2세대)","iPad7,3":"아이패드 프로 10.5","iPad7,5":"아이패드 (6세대)","iPad7,11":"아이패드 (7세대)","iPad8,1":"아이패드 프로 11 (1세대)","iPad8,5":"아이패드 프로 12.9 (3세대)","iPad8,9":"아이패드 프로 11 (2세대)","iPad8,11":"아이패드 프로 12.9 (4세대)","iPad11,1":"아이패드 미니 (5세대)","iPad11,3":"아이패드 에어 (3세대)","iPad11,6":"아이패드 (8세대)","iPad12,1":"아이패드 (9세대)","iPad13,1":"아이패드 에어 (4세대)","iPad13,4":"아이패드 프로 11 (3세대)","iPad13,8":"아이패드 프로 12.9 (5세대)","iPad13,16":"아이패드 에어 (5세대)","iPad13,18":"아이패드 (10세대)","iPad14,1":"아이패드 미니 (6세대)","iPad14,3":"아이패드 프로 11 (4세대)","iPad14,5":"아이패드 프로 12.9 (6세대)","iPad14,8":"아이패드 에어 11 (M2)","iPad14,10":"아이패드 에어 13 (M2)","iPad16,3":"아이패드 프로 11 (M4)","iPad16,5":"아이패드 프로 13 (M4)","iPad17,1":"아이패드 에어 11 (M2)","iPad17,2":"아이패드 에어 13 (M2)",
-            
-            /* === [Samsung Galaxy S/Note/Z] === */
-            "SHW-M110S":"갤럭시 S","SHW-M250S":"갤럭시 S2","SHV-E210S":"갤럭시 S3","SHV-E330S":"갤럭시 S4","SM-G900S":"갤럭시 S5","SM-G906S":"갤럭시 S5 광대역 LTE-A","SM-G920N":"갤럭시 S6","SM-G925N":"갤럭시 S6 엣지","SM-G928N":"갤럭시 S6 엣지+","SM-G930N":"갤럭시 S7","SM-G935N":"갤럭시 S7 엣지","SM-G950N":"갤럭시 S8","SM-G955N":"갤럭시 S8+","SM-G960N":"갤럭시 S9","SM-G965N":"갤럭시 S9+","SM-G970N":"갤럭시 S10e","SM-G973N":"갤럭시 S10","SM-G975N":"갤럭시 S10+","SM-G977N":"갤럭시 S10 5G","SM-G981N":"갤럭시 S20","SM-G986N":"갤럭시 S20+","SM-G988N":"갤럭시 S20 울트라","SM-G781N":"갤럭시 S20 FE","SM-G991N":"갤럭시 S21","SM-G996N":"갤럭시 S21+","SM-G998N":"갤럭시 S21 울트라","SM-G990N":"갤럭시 S21 FE","SM-S901N":"갤럭시 S22","SM-S906N":"갤럭시 S22+","SM-S908N":"갤럭시 S22 울트라","SM-S911N":"갤럭시 S23","SM-S916N":"갤럭시 S23+","SM-S918N":"갤럭시 S23 울트라","SM-S711N":"갤럭시 S23 FE","SM-S921N":"갤럭시 S24","SM-S926N":"갤럭시 S24+","SM-S928N":"갤럭시 S24 울트라","SM-S721N":"갤럭시 S24 FE","SM-S931N":"갤럭시 S25","SM-S935N":"갤럭시 S25 엣지","SM-S936N":"갤럭시 S25+","SM-S938N":"갤럭시 S25 울트라","SM-S941N":"갤럭시 S26","SM-S946N":"갤럭시 S26+","SM-S948N":"갤럭시 S26 울트라",
-            "SHV-E160S":"갤럭시 노트","SHV-E250S":"갤럭시 노트 2","SM-N900S":"갤럭시 노트 3","SM-N910S":"갤럭시 노트 4","SM-N915S":"갤럭시 노트 엣지","SM-N920N":"갤럭시 노트 5","SM-N930N":"갤럭시 노트 7","SM-N935S":"갤럭시 노트 FE","SM-N950N":"갤럭시 노트 8","SM-N960N":"갤럭시 노트 9","SM-N971N":"갤럭시 노트 10","SM-N976N":"갤럭시 노트 10+","SM-N770F":"갤럭시 노트 10 Lite","SM-N981N":"갤럭시 노트 20","SM-N986N":"갤럭시 노트 20 울트라",
-            "SM-F900N":"갤럭시 폴드","SM-F916N":"갤럭시 Z 폴드 2","SM-F926N":"갤럭시 Z 폴드 3","SM-F936N":"갤럭시 Z 폴드 4","SM-F946N":"갤럭시 Z 폴드 5","SM-F956N":"갤럭시 Z 폴드 6","SM-F966N":"갤럭시 Z 폴드 7","SM-F700N":"갤럭시 Z 플립","SM-F707N":"갤럭시 Z 플립 5G","SM-F711N":"갤럭시 Z 플립 3","SM-F721N":"갤럭시 Z 플립 4","SM-F731N":"갤럭시 Z 플립 5","SM-F741N":"갤럭시 Z 플립 6","SM-F751N":"갤럭시 Z 플립 7",
-            
-            /* === [Samsung Galaxy A/M/J & Tablet] === */
-            "SM-A105N":"갤럭시 A10","SM-A205N":"갤럭시 A20","SM-A305N":"갤럭시 A30","SM-A505N":"갤럭시 A50","SM-A125N":"갤럭시 A12","SM-A226L":"갤럭시 A22 (버디)","SM-A325N":"갤럭시 A32","SM-A426N":"갤럭시 A42","SM-A525N":"갤럭시 A52","SM-A526N":"갤럭시 A52s 5G","SM-A826N":"갤럭시 A82 (퀀텀 2)","SM-A245N":"갤럭시 A24","SM-A346N":"갤럭시 A34 5G","SM-A546N":"갤럭시 A54 5G (퀀텀 4)","SM-A156N":"갤럭시 A15 5G","SM-A256N":"갤럭시 A25 5G","SM-A356N":"갤럭시 A35 5G","SM-A556N":"갤럭시 A55 5G (퀀텀 5)","SM-A166N":"갤럭시 A16 5G","SM-A366N":"갤럭시 A36 5G","SM-A566N":"갤럭시 A56 5G (퀀텀 6)","SM-M336K":"갤럭시 M33 (점프 2)","SM-M536K":"갤럭시 M53 (점프 3)","SM-J530S":"갤럭시 J5","SM-J730S":"갤럭시 J7",
-            "SM-T700":"갤럭시 탭 S 8.4","SM-T705":"갤럭시 탭 S 8.4 (LTE)","SM-T800":"갤럭시 탭 S 10.5","SM-T805":"갤럭시 탭 S 10.5 (LTE)","SM-T710":"갤럭시 탭 S2 8.0","SM-T715":"갤럭시 탭 S2 8.0 (LTE)","SM-T810":"갤럭시 탭 S2 9.7","SM-T815":"갤럭시 탭 S2 9.7 (LTE)","SM-T820":"갤럭시 탭 S3","SM-T825":"갤럭시 탭 S3 (LTE)","SM-T830":"갤럭시 탭 S4","SM-T835":"갤럭시 탭 S4 (LTE)","SM-T720":"갤럭시 탭 S5e","SM-T725":"갤럭시 탭 S5e (LTE)","SM-T860":"갤럭시 탭 S6","SM-T865":"갤럭시 탭 S6 (LTE)","SM-T866N":"갤럭시 탭 S6 (5G)","SM-P610":"갤럭시 탭 S6 Lite","SM-P615":"갤럭시 탭 S6 Lite (LTE)","SM-T870":"갤럭시 탭 S7","SM-T875":"갤럭시 탭 S7 (LTE)","SM-T970":"갤럭시 탭 S7+","SM-T975":"갤럭시 탭 S7+ (LTE)","SM-T976":"갤럭시 탭 S7+ (5G)","SM-T730":"갤럭시 탭 S7 FE","SM-T733":"갤럭시 탭 S7 FE (Wi-Fi)","SM-T735":"갤럭시 탭 S7 FE (LTE)","SM-T736":"갤럭시 탭 S7 FE (5G)","SM-X700":"갤럭시 탭 S8","SM-X706":"갤럭시 탭 S8 (5G)","SM-X800":"갤럭시 탭 S8+","SM-X806":"갤럭시 탭 S8+ (5G)","SM-X900":"갤럭시 탭 S8 울트라","SM-X906":"갤럭시 탭 S8 울트라 (5G)","SM-X710":"갤럭시 탭 S9","SM-X716":"갤럭시 탭 S9 (5G)","SM-X810":"갤럭시 탭 S9+","SM-X816":"갤럭시 탭 S9+ (5G)","SM-X910":"갤럭시 탭 S9 울트라","SM-X916":"갤럭시 탭 S9 울트라 (5G)","SM-X510":"갤럭시 탭 S9 FE","SM-X516":"갤럭시 탭 S9 FE (5G)","SM-X610":"갤럭시 탭 S9 FE+","SM-X616":"갤럭시 탭 S9 FE+ (5G)","SM-X820":"갤럭시 탭 S10+","SM-X826":"갤럭시 탭 S10+ (5G)","SM-X920":"갤럭시 탭 S10 울트라","SM-X926N":"갤럭시 탭 S10 울트라 (5G)","SM-X730":"갤럭시 탭 S11","SM-X736":"갤럭시 탭 S11 (5G)","SM-X830":"갤럭시 탭 S11+","SM-X836":"갤럭시 탭 S11+ (5G)","SM-X930":"갤럭시 탭 S11 울트라","SM-X936":"갤럭시 탭 S11 울트라 (5G)","SM-X936N":"갤럭시 탭 S11 울트라 (5G)",
-            "SM-T280":"갤럭시 탭 A 7.0","SM-T380":"갤럭시 탭 A 8.0","SM-T500":"갤럭시 탭 A7","SM-T505":"갤럭시 탭 A7 (LTE)","SM-X200":"갤럭시 탭 A8","SM-X205":"갤럭시 탭 A8 (LTE)","SM-X110":"갤럭시 탭 A9","SM-X210":"갤럭시 탭 A9+","SM-X215":"갤럭시 탭 A9+ (5G)","SM-T375":"갤럭시 탭 E 8.0","SM-T560":"갤럭시 탭 E 9.6"
-        };
-
-        // 검색을 위한 대소문자 변환 인덱스 세팅 (이 아래 코드는 수정 불필요)
-        const dbUpperCase = {};
-        for (let key in rawDb) {
-            dbUpperCase[key.toUpperCase()] = rawDb[key];
-        }
-
-        function find() {
-            let originalInput = document.getElementById('q').value.trim();
-            if (!originalInput) return;
-
-            let searchKey = originalInput.toUpperCase();
-            let resDiv = document.getElementById('result');
-            
-            let found = dbUpperCase[searchKey];
-
-            // SM- 통신사 뒷자리 제거 및 매칭 로직
-            if (!found) {
-                let match = searchKey.match(/^(SM-[A-Z]+[0-9]+)/);
-                if (match) {
-                    let base = match[1]; 
-                    for (let key in dbUpperCase) { 
-                        if (key.startsWith(base)) { 
-                            found = dbUpperCase[key]; 
-                            break; 
-                        } 
-                    }
-                }
-            }
-
-            if(found) {
-                document.getElementById('resN').innerText = found;
-                document.getElementById('resI').innerText = originalInput;
-                
-                let wikiSearch = found;
-                
-                // 나무위키 링크 스마트 변환 로직
-                if (wikiSearch.includes("아이패드")) {
-                    wikiSearch = wikiSearch.replace(/아이패드/g, "iPad").replace(/프로/g, "Pro").replace(/에어/g, "Air").replace(/미니/g, "mini");
-                    wikiSearch = wikiSearch.replace(/\s*\(M(\d)\)/, "(M$1 모델)");
-                    wikiSearch = wikiSearch.replace(/\s+\(/g, "("); // 괄호 앞 공백 제거
-                    
-                    // 1세대 특수 처리 (나무위키는 1세대를 표기하지 않음)
-                    if (wikiSearch === "iPad Air(1세대)") wikiSearch = "iPad Air";
-                    if (wikiSearch === "iPad mini(1세대)") wikiSearch = "iPad mini";
-                    if (wikiSearch === "iPad(1세대)") wikiSearch = "iPad";
-                } else if (wikiSearch.includes("아이폰")) {
-                    wikiSearch = wikiSearch.replace(/아이폰/g, "iPhone").replace(/프로/g, "Pro").replace(/맥스/g, "Max").replace(/플러스/g, "Plus").replace(/미니/g, "mini").replace(/에어/g, "Air");
-                    wikiSearch = wikiSearch.replace(/\s+\(/g, "(");
-                    
-                    // SE 1세대 특수 처리
-                    if (wikiSearch === "iPhone SE(1세대)") wikiSearch = "iPhone SE";
-                    // 아이폰 1세대 특수 처리 (나무위키는 괄호를 붙임)
-                    if (wikiSearch === "iPhone(1세대)") wikiSearch = "iPhone(1세대)";
-                } else {
-                    // 삼성 기기 처리
-                    wikiSearch = wikiSearch.split('(')[0].trim();
-                    if (wikiSearch.includes("갤럭시")) {
-                        // 노트/폴드 띄어쓰기 정비
-                        wikiSearch = wikiSearch.replace(/폴드\s*(\d)/, '폴드$1').replace(/플립\s*(\d)/, '플립$1').replace(/노트\s*(\d)/, '노트$1');
-                        // 수식어 영문 변환 (울트라, 플러스)
-                        wikiSearch = wikiSearch.replace(/울트라/g, 'Ultra').replace(/플러스/g, '+');
-                        // 엣지는 나무위키에서도 한글 '엣지'를 쓰므로 그대로 둡니다.
-                    }
-                }
-
-                document.getElementById('wikiBtn').href = "https://namu.wiki/w/" + encodeURIComponent(wikiSearch);
-                resDiv.style.display = 'block';
-            } else {
-                alert("해당 기기는 DB에 없거나 번호가 정확하지 않습니다.\n입력 코드를 다시 확인해 주세요.");
-                resDiv.style.display = 'none';
-            }
-        }
-    </script>
+<div class="container">
+<h1>📱 기기 사양 조회 마스터</h1>
+<div class="info-box">
+<span class="info-title">🔍 2026. 04 시점 기준 DB</span>
+<p class="info-text">🍎 <b>애플:</b> 아이폰/아이패드 전 시리즈<br>🔹 <b>삼성 폰/탭:</b> S/Note/Z/A/M/J/Tab 전 라인업</p>
+</div>
+<div class="search-box">
+<input type="text" id="q" placeholder="모델명 입력" onfocus="this.value=''">
+<button id="b">조회하기</button>
+</div>
+<div id="result">
+<div class="spec-item"><span class="label">정식 모델명</span><span id="resN" class="value">-</span></div>
+<div class="spec-item"><span class="label">식별코드 / 모델번호</span><span id="resI" class="value">-</span></div>
+<a id="wikiBtn" href="#" target="_blank" class="wiki-link">🌳 나무위키 상세 정보 보기</a>
+</div>
+</div>
+<script>
+(function(){const _0x1a=['aGFuZXVsMDAtZGV2LmdpdGh1Yi5pbw==','bG9jYXRpb24=','aG9zdG5hbWU=','aW5uZXJIVE1M','Ym9keQ==','aHJlZg==','YWJvdXQ6Ymxhbms=','Z2V0RWxlbWVudEJ5SWQ=','dmFsdWU=','aW5uZXJUZXh0','ZGlzcGxheQ==','YmxvY2s=','bm9uZQ=='].map(atob);const _0x1b=window,_0x1c=document;if(!_0x1b[_0x1a[1]][_0x1a[2]].includes(_0x1a[0])){_0x1c[_0x1a[4]][_0x1a[3]]='';_0x1b[_0x1a[1]][_0x1a[5]]=_0x1a[6];return}(function(){setInterval(function(){debugger},100)})();_0x1c.addEventListener('contextmenu',e=>e.preventDefault());_0x1c.onkeydown=e=>{if(e.keyCode==123||(e.ctrlKey&&e.shiftKey&&(e.keyCode==73||e.keyCode==74))||(e.ctrlKey&&e.keyCode==85))return!1};const _0x1d={"iPhone1,1":"아이폰 (1세대)","iPhone1,2":"아이폰 3G","iPhone2,1":"아이폰 3GS","iPhone3,1":"아이폰 4","iPhone3,2":"아이폰 4","iPhone3,3":"아이폰 4","iPhone4,1":"아이폰 4s","iPhone5,1":"아이폰 5","iPhone5,2":"아이폰 5","iPhone5,3":"아이폰 5c","iPhone5,4":"아이폰 5c","iPhone6,1":"아이폰 5s","iPhone6,2":"아이폰 5s","iPhone7,2":"아이폰 6","iPhone7,1":"아이폰 6 플러스","iPhone8,1":"아이폰 6s","iPhone8,2":"아이폰 6s 플러스","iPhone8,4":"아이폰 SE (1세대)","iPhone9,1":"아이폰 7","iPhone9,3":"아이폰 7","iPhone9,2":"아이폰 7 플러스","iPhone9,4":"아이폰 7 플러스","iPhone10,1":"아이폰 8","iPhone10,4":"아이폰 8","iPhone10,2":"아이폰 8 플러스","iPhone10,5":"아이폰 8 플러스","iPhone10,3":"아이폰 X","iPhone10,6":"아이폰 X","iPhone11,8":"아이폰 XR","iPhone11,2":"아이폰 XS","iPhone11,4":"아이폰 XS 맥스","iPhone11,6":"아이폰 XS 맥스","iPhone12,1":"아이폰 11","iPhone12,3":"아이폰 11 프로","iPhone12,5":"아이폰 11 프로 맥스","iPhone12,8":"아이폰 SE (2세대)","iPhone13,1":"아이폰 12 미니","iPhone13,2":"아이폰 12","iPhone13,3":"아이폰 12 프로","iPhone13,4":"아이폰 12 프로 맥스","iPhone14,4":"아이폰 13 미니","iPhone14,5":"아이폰 13","iPhone14,2":"아이폰 13 프로","iPhone14,3":"아이폰 13 프로 맥스","iPhone14,6":"아이폰 SE (3세대)","iPhone14,7":"아이폰 14","iPhone14,8":"아이폰 14 플러스","iPhone15,2":"아이폰 14 프로","iPhone15,3":"아이폰 14 프로 맥스","iPhone15,4":"아이폰 15","iPhone15,5":"아이폰 15 플러스","iPhone16,1":"아이폰 15 프로","iPhone16,2":"아이폰 15 프로 맥스","iPhone17,3":"아이폰 16","iPhone17,4":"아이폰 16 플러스","iPhone17,1":"아이폰 16 프로","iPhone17,2":"아이폰 16 프로 맥스","iPhone17,5":"아이폰 16e","iPhone18,3":"아이폰 17","iPhone18,4":"아이폰 에어","iPhone18,1":"아이폰 17 프로","iPhone18,2":"아이폰 17 프로 맥스","iPhone18,5":"아이폰 17e","iPad1,1":"아이패드 (1세대)","iPad2,1":"아이패드 2","iPad2,5":"아이패드 미니 (1세대)","iPad3,1":"아이패드 (3세대)","iPad3,4":"아이패드 (4세대)","iPad4,1":"아이패드 에어 (1세대)","iPad4,4":"아이패드 미니 2","iPad4,7":"아이패드 미니 3","iPad5,1":"아이패드 미니 4","iPad5,3":"아이패드 에어 2","iPad6,3":"아이패드 프로 9.7","iPad6,7":"아이패드 프로 12.9 (1세대)","iPad6,11":"아이패드 (5세대)","iPad7,1":"아이패드 프로 12.9 (2세대)","iPad7,3":"아이패드 프로 10.5","iPad7,5":"아이패드 (6세대)","iPad7,11":"아이패드 (7세대)","iPad8,1":"아이패드 프로 11 (1세대)","iPad8,5":"아이패드 프로 12.9 (3세대)","iPad8,9":"아이패드 프로 11 (2세대)","iPad8,11":"아이패드 프로 12.9 (4세대)","iPad11,1":"아이패드 미니 (5세대)","iPad11,3":"아이패드 에어 (3세대)","iPad11,6":"아이패드 (8세대)","iPad12,1":"아이패드 (9세대)","iPad13,1":"아이패드 에어 (4세대)","iPad13,4":"아이패드 프로 11 (3세대)","iPad13,8":"아이패드 프로 12.9 (5세대)","iPad13,16":"아이패드 에어 (5세대)","iPad13,18":"아이패드 (10세대)","iPad14,1":"아이패드 미니 (6세대)","iPad14,3":"아이패드 프로 11 (4세대)","iPad14,5":"아이패드 프로 12.9 (6세대)","iPad14,8":"아이패드 에어 11 (M2)","iPad14,10":"아이패드 에어 13 (M2)","iPad16,3":"아이패드 프로 11 (M4)","iPad16,5":"아이패드 프로 13 (M4)","iPad17,1":"아이패드 에어 11 (M2)","iPad17,2":"아이패드 에어 13 (M2)","SHW-M110S":"갤럭시 S","SHW-M250S":"갤럭시 S2","SHV-E210S":"갤럭시 S3","SHV-E330S":"갤럭시 S4","SM-G900S":"갤럭시 S5","SM-G906S":"갤럭시 S5 광대역 LTE-A","SM-G920N":"갤럭시 S6","SM-G925N":"갤럭시 S6 엣지","SM-G928N":"갤럭시 S6 엣지+","SM-G930N":"갤럭시 S7","SM-G935N":"갤럭시 S7 엣지","SM-G950N":"갤럭시 S8","SM-G955N":"갤럭시 S8+","SM-G960N":"갤럭시 S9","SM-G965N":"갤럭시 S9+","SM-G970N":"갤럭시 S10e","SM-G973N":"갤럭시 S10","SM-G975N":"갤럭시 S10+","SM-G977N":"갤럭시 S10 5G","SM-G981N":"갤럭시 S20","SM-G986N":"갤럭시 S20+","SM-G988N":"갤럭시 S20 울트라","SM-G781N":"갤럭시 S20 FE","SM-G991N":"갤럭시 S21","SM-G996N":"갤럭시 S21+","SM-G998N":"갤럭시 S21 울트라","SM-G990N":"갤럭시 S21 FE","SM-S901N":"갤럭시 S22","SM-S906N":"갤럭시 S22+","SM-S908N":"갤럭시 S22 울트라","SM-S911N":"갤럭시 S23","SM-S916N":"갤럭시 S23+","SM-S918N":"갤럭시 S23 울트라","SM-S711N":"갤럭시 S23 FE","SM-S921N":"갤럭시 S24","SM-S926N":"갤럭시 S24+","SM-S928N":"갤럭시 S24 울트라","SM-S721N":"갤럭시 S24 FE","SM-S931N":"갤럭시 S25","SM-S935N":"갤럭시 S25 엣지","SM-S936N":"갤럭시 S25+","SM-S938N":"갤럭시 S25 울트라","SM-S941N":"갤럭시 S26","SM-S946N":"갤럭시 S26+","SM-S948N":"갤럭시 S26 울트라","SHV-E160S":"갤럭시 노트","SHV-E250S":"갤럭시 노트 2","SM-N900S":"갤럭시 노트 3","SM-N910S":"갤럭시 노트 4","SM-N915S":"갤럭시 노트 엣지","SM-N920N":"갤럭시 노트 5","SM-N930N":"갤럭시 노트 7","SM-N935S":"갤럭시 노트 FE","SM-N950N":"갤럭시 노트 8","SM-N960N":"갤럭시 노트 9","SM-N971N":"갤럭시 노트 10","SM-N976N":"갤럭시 노트 10+","SM-N770F":"갤럭시 노트 10 Lite","SM-N981N":"갤럭시 노트 20","SM-N986N":"갤럭시 노트 20 울트라","SM-F900N":"갤럭시 폴드","SM-F916N":"갤럭시 Z 폴드 2","SM-F926N":"갤럭시 Z 폴드 3","SM-F936N":"갤럭시 Z 폴드 4","SM-F946N":"갤럭시 Z 폴드 5","SM-F956N":"갤럭시 Z 폴드 6","SM-F966N":"갤럭시 Z 폴드 7","SM-F700N":"갤럭시 Z 플립","SM-F707N":"갤럭시 Z 플립 5G","SM-F711N":"갤럭시 Z 플립 3","SM-F721N":"갤럭시 Z 플립 4","SM-F731N":"갤럭시 Z 플립 5","SM-F741N":"갤럭시 Z 플립 6","SM-F751N":"갤럭시 Z 플립 7","SM-A105N":"갤럭시 A10","SM-A205N":"갤럭시 A20","SM-A305N":"갤럭시 A30","SM-A505N":"갤럭시 A50","SM-A125N":"갤럭시 A12","SM-A226L":"갤럭시 A22 (버디)","SM-A325N":"갤럭시 A32","SM-A426N":"갤럭시 A42","SM-A525N":"갤럭시 A52","SM-A526N":"갤럭시 A52s 5G","SM-A826N":"갤럭시 A82 (퀀텀 2)","SM-A245N":"갤럭시 A24","SM-A346N":"갤럭시 A34 5G","SM-A546N":"갤럭시 A54 5G (퀀텀 4)","SM-A156N":"갤럭시 A15 5G","SM-A256N":"갤럭시 A25 5G","SM-A356N":"갤럭시 A35 5G","SM-A556N":"갤럭시 A55 5G (퀀텀 5)","SM-A166N":"갤럭시 A16 5G","SM-A366N":"갤럭시 A36 5G","SM-A566N":"갤럭시 A56 5G (퀀텀 6)","SM-M336K":"갤럭시 M33 (점프 2)","SM-M536K":"갤럭시 M53 (점프 3)","SM-J530S":"갤럭시 J5","SM-J730S":"갤럭시 J7","SM-T700":"갤럭시 탭 S 8.4","SM-T705":"갤럭시 탭 S 8.4 (LTE)","SM-T800":"갤럭시 탭 S 10.5","SM-T805":"갤럭시 탭 S 10.5 (LTE)","SM-T710":"갤럭시 탭 S2 8.0","SM-T715":"갤럭시 탭 S2 8.0 (LTE)","SM-T810":"갤럭시 탭 S2 9.7","SM-T815":"갤럭시 탭 S2 9.7 (LTE)","SM-T820":"갤럭시 탭 S3","SM-T825":"갤럭시 탭 S3 (LTE)","SM-T830":"갤럭시 탭 S4","SM-T835":"갤럭시 탭 S4 (LTE)","SM-T720":"갤럭시 탭 S5e","SM-T725":"갤럭시 탭 S5e (LTE)","SM-T860":"갤럭시 탭 S6","SM-T865":"갤럭시 탭 S6 (LTE)","SM-T866N":"갤럭시 탭 S6 (5G)","SM-P610":"갤럭시 탭 S6 Lite","SM-P615":"갤럭시 탭 S6 Lite (LTE)","SM-T870":"갤럭시 탭 S7","SM-T875":"갤럭시 탭 S7 (LTE)","SM-T970":"갤럭시 탭 S7+","SM-T975":"갤럭시 탭 S7+ (LTE)","SM-T976":"갤럭시 탭 S7+ (5G)","SM-T730":"갤럭시 탭 S7 FE","SM-T733":"갤럭시 탭 S7 FE (Wi-Fi)","SM-T735":"갤럭시 탭 S7 FE (LTE)","SM-T736":"갤럭시 탭 S7 FE (5G)","SM-X700":"갤럭시 탭 S8","SM-X706":"갤럭시 탭 S8 (5G)","SM-X800":"갤럭시 탭 S8+","SM-X806":"갤럭시 탭 S8+ (5G)","SM-X900":"갤럭시 탭 S8 울트라","SM-X906":"갤럭시 탭 S8 울트라 (5G)","SM-X710":"갤럭시 탭 S9","SM-X716":"갤럭시 탭 S9 (5G)","SM-X810":"갤럭시 탭 S9+","SM-X816":"갤럭시 탭 S9+ (5G)","SM-X910":"갤럭시 탭 S9 울트라","SM-X916":"갤럭시 탭 S9 울트라 (5G)","SM-X510":"갤럭시 탭 S9 FE","SM-X516":"갤럭시 탭 S9 FE (5G)","SM-X610":"갤럭시 탭 S9 FE+","SM-X616":"갤럭시 탭 S9 FE+ (5G)","SM-X820":"갤럭시 탭 S10+","SM-X826":"갤럭시 탭 S10+ (5G)","SM-X920":"갤럭시 탭 S10 울트라","SM-X926N":"갤럭시 탭 S10 울트라 (5G)","SM-X730":"갤럭시 탭 S11","SM-X736":"갤럭시 탭 S11 (5G)","SM-X830":"갤럭시 탭 S11+","SM-X836":"갤럭시 탭 S11+ (5G)","SM-X930":"갤럭시 탭 S11 울트라","SM-X936":"갤럭시 탭 S11 울트라 (5G)","SM-X936N":"갤럭시 탭 S11 울트라 (5G)","SM-T280":"갤럭시 탭 A 7.0","SM-T380":"갤럭시 탭 A 8.0","SM-T500":"갤럭시 탭 A7","SM-T505":"갤럭시 탭 A7 (LTE)","SM-X200":"갤럭시 탭 A8","SM-X205":"갤럭시 탭 A8 (LTE)","SM-X110":"갤럭시 탭 A9","SM-X210":"갤럭시 탭 A9+","SM-X215":"갤럭시 탭 A9+ (5G)","SM-T375":"갤럭시 탭 E 8.0","SM-T560":"갤럭시 탭 E 9.6"};const _0x1e={};for(let k in _0x1d){_0x1e[k.toUpperCase()]=_0x1d[k]}const _0x1f=()=>{let i=_0x1c[_0x1a[7]]('q')[_0x1a[8]].trim();if(!i)return;let s=i.toUpperCase();let r=_0x1c[_0x1a[7]]('result');let f=_0x1e[s];if(!f){let m=s.match(/^(SM-[A-Z]+[0-9]+)/);if(m){let b=m[1];for(let k in _0x1e){if(k.startsWith(b)){f=_0x1e[k];break}}}}if(f){_0x1c[_0x1a[7]]('resN')[_0x1a[9]]=f;_0x1c[_0x1a[7]]('resI')[_0x1a[9]]=i;let w=f;if(w.includes("아이패드")){w=w.replace(/아이패드/g,"iPad").replace(/프로/g,"Pro").replace(/에어/g,"Air").replace(/미니/g,"mini").replace(/\s*\(M(\d)\)/,"(M$1 모델)").replace(/\s+\(/g,"(");if(w==="iPad Air(1세대)")w="iPad Air";if(w==="iPad mini(1세대)")w="iPad mini";if(w==="iPad(1세대)")w="iPad"}else if(w.includes("아이폰")){w=w.replace(/아이폰/g,"iPhone").replace(/프로/g,"Pro").replace(/맥스/g,"Max").replace(/플러스/g,"Plus").replace(/미니/g,"mini").replace(/에어/g,"Air").replace(/\s+\(/g,"(");if(w==="iPhone SE(1세대)")w="iPhone SE";if(w==="iPhone(1세대)")w="iPhone(1세대)"}else{w=w.split('(')[0].trim();if(w.includes("갤럭시"))w=w.replace(/폴드\s*(\d)/,'폴드$1').replace(/플립\s*(\d)/,'플립$1').replace(/노트\s*(\d)/,'노트$1').replace(/울트라/g,'Ultra').replace(/플러스/g,'+')}_0x1c[_0x1a[7]]('wikiBtn')[_0x1a[5]]="https://namu.wiki/w/"+encodeURIComponent(w);r.style[_0x1a[10]]=_0x1a[11]}else{r.style[_0x1a[10]]=_0x1a[12]}};_0x1c[_0x1a[7]]('b').onclick=_0x1f;_0x1c[_0x1a[7]]('q').onkeypress=e=>{if(e.keyCode==13)_0x1f()}})();
+</script>
 </body>
 </html>
